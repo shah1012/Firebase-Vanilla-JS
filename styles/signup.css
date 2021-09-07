@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background-color: var(--primaryColor);
+
+  user-select: none;
+}
+
+.loginWrapper {
+  background-color: var(--secondaryColor);
+  margin-top: 10vh;
+  width: 50%;
+  padding: 20px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  text-align: left;
+
+  box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+h3 {
+  padding: 10px;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--whiteColor);
+
+  margin-top: 2vh;
+}
+
+.loginLabel {
+  color: var(--whiteColor);
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.emailInput,
+.passwordInput,
+.usernameInput {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 100;
+  background-color: var(--blueColor);
+  color: var(--whiteColor);
+  padding: 1rem;
+  width: 100%;
+  height: 35px;
+}
+
+.emailInput:focus,
+.passwordInput:focus,
+.usernameInput:focus {
+  box-shadow: 0 0 0 3px hsla(220, 100%, 50%, 80%);
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1.75rem;
+  color: var(--whiteColor);
+  background-color: rgb(255, 0, 0);
+  margin: 20px 0;
+  width: 100%;
+  transition: all 0.05s ease-in;
+}
+
+button:active {
+  background-color: darkred;
+}
+
+p {
+  color: var(--whiteColor);
+  font-weight: 600;
+}
+
+a {
+  color: darkblue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:root {
+  --primaryColor: #334257;
+  --secondaryColor: #476072;
+  --whiteColor: #eeeeee;
+  --blueColor: #548ca8;
+}
+
+@media (max-width: 1150px) {
+  .loginWrapper {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .loginWrapper {
+    width: 100%;
+  }
+}

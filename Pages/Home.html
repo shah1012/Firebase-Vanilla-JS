@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+
+    <link rel="stylesheet" href="../styles/Home.css" />
+  </head>
+  <body>
+    <div class="background">
+      <h1>Welcome User</h1>
+
+      <div class="info">
+        <div class="usernameDiv">
+          <label class="usernameLbl"></label>
+        </div>
+
+        <div class="emailDiv">
+          <label class="emailLbl"></label>
+        </div>
+
+        <div class="buttonWrapper">
+          <button class="signOutBtn">Sign out</button>
+        </div>
+      </div>
+    </div>
+
+    <script defer type="module" src="../js/Home.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primaryColor: #334257;
+  --secondaryColor: #476072;
+  --whiteColor: #eeeeee;
+  --blueColor: #548ca8;
+}
