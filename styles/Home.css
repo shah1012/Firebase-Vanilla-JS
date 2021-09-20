@@ -45,7 +45,9 @@
 }
 
 .usernameDiv,
-.emailDiv {
+.emailDiv,
+.ageDiv,
+.genderDiv {
   width: 100%;
   background-color: var(--blueColor);
 
@@ -54,7 +56,9 @@
 }
 
 .usernameLbl,
-.emailLbl {
+.emailLbl,
+.ageLbl,
+.genderLbl {
   font-size: 1.75rem;
   font-weight: bold;
   color: var(--whiteColor);
