@@ -8,6 +8,7 @@ import {
   signOut,
   onValue,
   update,
+  child,
 } from "./firebase.js";
 
 //elements
@@ -18,6 +19,7 @@ const usernameLbl = document.querySelector(".usernameLbl");
 const ageLbl = document.querySelector(".ageLbl");
 const genderLbl = document.querySelector(".genderLbl");
 const signOutBtn = document.querySelector(".signOutBtn");
+const updateBtn = document.querySelector(".updateBtn");
 
 let fetchUsers = (getEmail) => {
   return get(ref(db, "/users")).then((snap) => {
@@ -61,6 +63,21 @@ document.body.onload = async () => {
     location.href = "/Pages/login.html";
   }
 };
+
+updateBtn.addEventListener("click", () => {
+  let agePrompt = prompt("Updated Age");
+  let genderPrompt = prompt("Updated Gender");
+
+  if ((genderPrompt || agePrompt) === null) {
+    alert("Empty Inputs");
+  } else if ((genderPrompt || agePrompt) === "") {
+    alert("Empty Inputs");
+  } else {
+    get(ref(db, "/users")).then((snapshot) => {
+      console.log(snapshot.val());
+    });
+  }
+});
 
 signOutBtn.addEventListener("click", () => {
   localStorage.removeItem("UserEmail");

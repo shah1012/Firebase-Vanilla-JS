@@ -14,6 +14,7 @@ import {
   ref,
   onValue,
   update,
+  child,
 } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
 const firebaseConfig = {
   apiKey: "AIzaSyD-ZlrZVSCHuiQ8xbbSs1QhtaATmfv4Ljk",
@@ -41,4 +42,5 @@ export {
   signOut,
   onValue,
   update,
+  child,
 };

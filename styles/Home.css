@@ -68,7 +68,8 @@
   width: 100%;
 }
 
-.signOutBtn {
+.signOutBtn,
+.updateBtn {
   border: none;
   outline: none;
   cursor: pointer;
@@ -80,7 +81,8 @@
   color: var(--whiteColor);
 }
 
-.signOutBtn:active {
+.signOutBtn:active,
+.updateBtn:active {
   background-color: rgb(0, 0, 59);
 }
 
