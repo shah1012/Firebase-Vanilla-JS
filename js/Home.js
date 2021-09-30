@@ -20,63 +20,85 @@ const ageLbl = document.querySelector(".ageLbl");
 const genderLbl = document.querySelector(".genderLbl");
 const signOutBtn = document.querySelector(".signOutBtn");
 const updateBtn = document.querySelector(".updateBtn");
+const getEmail = localStorage.getItem("UserEmail");
 
 let fetchUsers = (getEmail) => {
   return get(ref(db, "/users")).then((snap) => {
     let { ...data } = snap.val();
 
-    return Object.values(data).filter((user) => user.email === getEmail);
+    let x = Object.values(data).filter((user) => user.email === getEmail);
+
+    return x[0];
   });
 };
 
-document.body.onload = async () => {
-  const getEmail = localStorage.getItem("UserEmail");
+const updateTexts = (user) => {
+  usernameLbl.innerText = `Username: ${user.username}`;
+  emailLbl.innerText = `Email: ${user.email}`;
+  ageLbl.innerText = `Age: ${user.age}`;
+  genderLbl.innerText = `Gender: ${user.gender}`;
+};
+
+document.body.onload = () => {
   if (getEmail) {
-    fetchUsers(getEmail).then((e) => {
-      let user = e[0];
-      if (!(user.age || user.gender)) {
-        let inputAge = prompt("Please enter your age");
-        let inputGender = prompt("Please enter your gender");
-        if (inputAge || inputGender === null) {
-          update(ref(db, `/users/${user.username}`), {
-            username: user.username,
-            email: user.email,
+    fetchUsers(getEmail).then((user) => {
+      let { age, gender, username, email } = user;
+      if (!(age || gender)) {
+        let agePrompt = prompt("Please enter your age");
+        let genderPrompt = prompt("Please enter your gender");
+
+        if (
+          agePrompt === null ||
+          agePrompt === "" ||
+          genderPrompt === null ||
+          genderPrompt === ""
+        ) {
+          update(ref(db, `/users/${username}`), {
+            username,
+            email,
             age: 0,
-            gender: "None",
+            gender: "none",
           });
+
+          update;
+
+          updateTexts(user);
         }
-        set(ref(db, `/users/${user.username}`), {
-          username: user.username,
-          email: user.email,
-          age: inputAge,
-          gender: inputGender,
-        });
       } else {
-        title.innerText = `Welcome!`;
-        usernameLbl.innerText = `Username: ${user.username}`;
-        emailLbl.innerText = `Email: ${user.email}`;
-        ageLbl.innerText = `Age: ${user.age}`;
-        genderLbl.innerText = `Gender: ${user.gender}`;
+        updateTexts(user);
+        console.log("Success");
       }
     });
   } else {
-    location.href = "/Pages/login.html";
+    location.href = "./login.html";
   }
 };
 
 updateBtn.addEventListener("click", () => {
-  let agePrompt = prompt("Updated Age");
-  let genderPrompt = prompt("Updated Gender");
+  let agePpt = prompt("New Age value");
+  let genderPpt = prompt(" New Gender value");
 
-  if ((genderPrompt || agePrompt) === null) {
-    alert("Empty Inputs");
-  } else if ((genderPrompt || agePrompt) === "") {
-    alert("Empty Inputs");
-  } else {
-    get(ref(db, "/users")).then((snapshot) => {
-      console.log(snapshot.val());
-    });
-  }
+  fetchUsers(getEmail).then((user) => {
+    if (
+      !(
+        agePpt === null ||
+        agePpt === "" ||
+        genderPpt === null ||
+        genderPpt === ""
+      )
+    ) {
+      update(ref(db, `/users/${user.username}`), {
+        username: user.username,
+        email: user.email,
+        age: agePpt,
+        gender: genderPpt,
+      }).then(() => {
+        location.reload();
+      });
+    } else {
+      alert("One or more of your values is empty or null");
+    }
+  });
 });
 
 signOutBtn.addEventListener("click", () => {
